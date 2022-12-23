@@ -9,6 +9,9 @@ for item in s1:
   print(item, end=' ')
 print()
 
+c = set(c for c in 'abc')
+print(c)
+
 l1 = sorted(s1)
 for item in l1:
   print(item, end=' ')
