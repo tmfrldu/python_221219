@@ -43,7 +43,7 @@ print(add(1, 1))  # 해당 함수내에 리턴값이 존재함_ 출력 가능
 lines("가변 매개변수")
 
 
-def add(n, *values):
+def add(n, *values):  # *value 입력값을 여러개 받을 때
   for i in range(n):
     for val in values:
       print(val, end=' ')
@@ -128,6 +128,7 @@ print("1. ", sum_all(end=100))
 print("1. ", sum_all(end=100, step=2))
 
 lines("매개변수의 Scope")
+# 함수 내부의 변수는 할당이 되면 지역변수이다.
 a = 1
 def vartest(a):
   a += 1
@@ -140,7 +141,10 @@ a= vartest(a) # vartest 리턴값으로 초기화
 print(a)  # 변수 a가 전역변수로 선언되었기 때문에 출력 가능
 
 def vartest2():
-  global a   # 외부에 선언된 전역변수 a를 사용
+  global a   # 함수 안에서 함수 밖의 변수를 변경할때 사용
+  # 함수 내부에서는 외부에 선언된 변수는 참조만 가능
+  # 함수 내부에서 외부와 같은 이름 할당하면 연산 가능 <- 지역변수
+  # 함수 내부의 global 변수는 함수 실행하면 사용가능 <- 외부 변수의 값이 변경됨
   a += 1
   return a
 vartest2()
