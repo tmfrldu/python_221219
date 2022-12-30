@@ -1,4 +1,4 @@
-class student:
+class Student:
   @property
   def id(self): return self.__id
   @id.setter
@@ -20,7 +20,4 @@ class student:
   @pw.getter
   def pw(self): return self.__pw
 
-  def __init__(self, id, name, pw):
-    self.__id = id
-    self.__name = name
-    self.__pw = pw
+

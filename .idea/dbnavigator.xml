@@ -14,6 +14,12 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9b662f6d-0059-462b-98d9-bc523be4f72e">
       <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select
+    ss.name,
+    ss.seq
+from
+    sqlite_sequence ss;
+
+select
     s.id,
     s.name,
     s.pass,
@@ -27,6 +33,10 @@ from
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="9b662f6d-0059-462b-98d9-bc523be4f72e" dataset="main.student" active-filter-id="" />
+    <filter-actions connection-id="9b662f6d-0059-462b-98d9-bc523be4f72e" dataset="main.sqlite_sequence" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
