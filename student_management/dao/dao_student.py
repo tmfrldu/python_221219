@@ -16,17 +16,17 @@ class StudentDao(dao):   # dao_set의 dao를 상속
       print(e)
 
   def get_all(self):
-    rs = self.cursor.execute("select * from 'student' ")
+    rs = self.cursor.execute("select * from student ")
     return rs.fetchall()
 
   def insert_one(self, std):
     self.cursor.execute(f"insert into student (id, name, pass) "
-              f"values('{std.id}', '{std.name}', '{std.pw}' )")
+                        f"values('{std.id}', '{std.name}', '{std.pw}' )")
     self.conn.commit()
     return self.cursor.lastrowid
 
   def login_check(self, std):
     rs = self.cursor.execute(f"select  * from student "
-                   f"where id ={std.id} and pass={std.pw}")
+                   f"where id ='{std.id}' and pass='{std.pw}'")
     return rs.fetchone()
 

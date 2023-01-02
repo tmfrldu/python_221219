@@ -19,6 +19,7 @@
 from
     sqlite_sequence ss;
 
+
 select
     s.id,
     s.name,

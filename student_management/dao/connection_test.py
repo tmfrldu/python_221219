@@ -7,29 +7,29 @@ conn = sqlite3.connect('../../db.sqlite', isolation_level=None)
 
 c = conn.cursor()
 
-# c.execute("delete from student ")
-# conn.commit()
-#
-# sql = "update sqlite_sequence set seq=? where name=? "
-# d = (0, 'student')
-# c.execute(sql, d)
-# conn.commit()
-
-try:
-  ex = c.execute(f"insert into student(id, name, pass) "
-            f"values('user2', '사용자2', '1')")
-  print(type(ex))
-
-except Exception as e:
-  print('>>>', c.lastrowid)
-finally:
-  print('>>>', c.lastrowid)
+c.execute("delete from student ")
 conn.commit()
 
-c.execute("select * from 'student' s")
-print(c.lastrowid)
-# print(type(c.fetchall())) # list
-print(c.fetchall())
+sql = "update sqlite_sequence set seq=? where name=? "
+d = (0, 'student')
+c.execute(sql, d)
+conn.commit()
+
+# try:
+#   ex = c.execute(f"insert into student(id, name, pass) "
+#             f"values('user2', '사용자2', '1')")
+#   print(type(ex))
+#
+# except Exception as e:
+#   print('>>>', c.lastrowid)
+# finally:
+#   print('>>>', c.lastrowid)
+# conn.commit()
+#
+# c.execute("select * from 'student' s")
+# print(c.lastrowid)
+# # print(type(c.fetchall())) # list
+# print(c.fetchall())
 
 # result = c.execute(f"select  * from student "
 #                    f"where id ='user2' and pass='1' ")
