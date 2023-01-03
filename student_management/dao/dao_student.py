@@ -1,17 +1,14 @@
 from student_management.dao.dao_set import DaoSet as dao
 
 
-class StudentDao(dao):   # dao_set의 dao를 상속
+class StudentDao(dao):
   def __init__(self):
     self.conn = dao.connect(self)
     self.cursor = self.conn.cursor()
 
   def __del__(self):
     try:
-      if self.conn != None:
-        self.conn.close()
-      if self.cursor != None:
-        self.cursor.close()
+      self.disconnect()
     except Exception as e:
       print(e)
 
@@ -21,12 +18,23 @@ class StudentDao(dao):   # dao_set의 dao를 상속
 
   def insert_one(self, std):
     self.cursor.execute(f"insert into student (id, name, pass) "
-                        f"values('{std.id}', '{std.name}', '{std.pw}' )")
+                        f"values('{std.id}','{std.name}','{std.pw}' )")
     self.conn.commit()
     return self.cursor.lastrowid
 
+  def update_one(self, std):
+    self.cursor.execute(f"update student set name = '{std.name}', pass = '{std.pw}' where id = '{std.id}'")
+    self.conn.commit()
+    return self.cursor.rowcount
+
+
+  def delete_one(self, std):
+
+    self.cursor.execute(f"delete from student WHERE id = '{std.id}'")
+    self.conn.commit()
+    return self.cursor.rowcount
+
   def login_check(self, std):
     rs = self.cursor.execute(f"select  * from student "
-                   f"where id ='{std.id}' and pass='{std.pw}'")
+                             f"where id='{std.id}' and pass='{std.pw}'")
     return rs.fetchone()
-
